@@ -6,7 +6,7 @@ let wss;
 const clients = new Set();
 
 function initWebSocketServer() {
-  wss = new WebSocketServer({ port: 8080 });
+  wss = new WebSocketServer({ port: 8080, host: '10.4.1.206' });
 
   wss.on('connection', (ws) => {
     console.log('Client connected');
