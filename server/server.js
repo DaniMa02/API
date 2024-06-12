@@ -1,6 +1,5 @@
 import { executeSQL } from './database/insertSQL.js';
 import { initWebSocketServer } from './utils/webSocketUtils.js';
-import { proxmox } from './config/proxmoxConfig.js';
 
 
 // Inicializar el servidor WebSocket
@@ -17,7 +16,7 @@ const executeSQLPeriodically = () => {
     });
 };
 
-const lockVirtualMachine = async (vmid, node) => {
+/* const lockVirtualMachine = async (vmid, node) => {
   try {
     const theNode = proxmox.nodes.$(node);
     const options = { lock: 'clone' };
@@ -32,7 +31,7 @@ const lockVirtualMachine = async (vmid, node) => {
 const vmid = 107; // ID de la máquina virtual que deseas bloquear
 const node = 'pi'; // Nodo donde se encuentra la máquina virtual */
 
- lockVirtualMachine(vmid, node);
+/*  lockVirtualMachine(vmid, node); */
 
 // Ejecutar executeSQL inicialmente
 executeSQLPeriodically();

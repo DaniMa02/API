@@ -41,7 +41,7 @@ const HomePage = () => {
   const [showCreatedVMsModal, setShowCreatedVMsModal] = useState(false);
 
   useEffect(() => {
-    const newWs = new WebSocket('ws://localhost:8080');
+    const newWs = new WebSocket('ws://10.4.1.206:8080');
     setWs(newWs);
 
     newWs.onopen = () => {

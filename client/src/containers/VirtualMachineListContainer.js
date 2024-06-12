@@ -13,7 +13,7 @@ const VirtualMachineListContainer = () => {
   const itemsPerPage = 15;
 
   useEffect(() => {
-    const newWs = new WebSocket('ws://localhost:8080');
+    const newWs = new WebSocket('ws://10.4.1.206:8080');
     setWs(newWs);
 
     newWs.onopen = () => {
