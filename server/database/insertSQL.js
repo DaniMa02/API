@@ -34,7 +34,7 @@ async function executeSQL() {
     .map(log => [log.id, log.user, log.node, log.status, log.starttime, log.endtime, log.type, log.upid]);
 
     if (values.length > 0) {
-      const insertQuery = 'INSERT INTO `logs` (`vm_id`, `user`, `node`, `status` `start_time`, `end_time`,  `type`, `upid`) VALUES ?';
+      const insertQuery = 'INSERT INTO `logs` (`vm_id`, `user`, `node`, `status`, `start_time`, `end_time`, `type`, `upid`) VALUES ?';
       await new Promise((resolve, reject) => {
         conn.query(insertQuery, [values], (err, res) => {
           if (err) {
