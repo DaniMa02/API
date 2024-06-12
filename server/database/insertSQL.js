@@ -31,10 +31,10 @@ async function executeSQL() {
     // Insertar solo los nuevos registros
     const values = proxmoxLogs
     .filter(log => log.id !== '' && log.saved == 1  && !existingIds.includes(log.upid.toString()))
-    .map(log => [log.id, log.user, log.node, log.status, log.saved, log.starttime, log.endtime, log.type, log.upid]);
+    .map(log => [log.id, log.user, log.node, log.status, log.starttime, log.endtime, log.type, log.upid]);
 
     if (values.length > 0) {
-      const insertQuery = 'INSERT INTO `logs` (`id`, `user`, `node`, `status`, `saved`, `starttime`, `endtime`, `type`, `upid`) VALUES ?';
+      const insertQuery = 'INSERT INTO `logs` (`vm_id`, `user`, `node`, `status` `starttime`, `endtime`,  `type`, `upid`) VALUES ?';
       await new Promise((resolve, reject) => {
         conn.query(insertQuery, [values], (err, res) => {
           if (err) {
