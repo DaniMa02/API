@@ -4,7 +4,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const proxmox = proxmoxApi({
     host: '10.4.0.56',
     password: 'Admin1234.',
-    tokenID: 'root@pam',
+    username: 'root@pam',
     port: 8006
 });
 

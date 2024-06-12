@@ -4,9 +4,9 @@ async function initialize() {
   try {
     const connection = await mysql.createConnection({
       host: 'localhost',
-      user: 'api',
-      password: 'api123',
-      database: 'logsproxmox'
+      user: 'root',
+      password: 'server',
+      database: 'logs_proxmox'
     });
     console.log('Conectado con éxito');
     return connection;
