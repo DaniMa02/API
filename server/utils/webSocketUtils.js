@@ -57,6 +57,10 @@ async function sendDataToClients() {
     const virtualMachines = await getVirtualMachines();
     const logs = await getLogsFromView();
 
+  if (typeof proxmoxData !== 'object' || !Array.isArray(virtualMachines) || !Array.isArray(logs)) {
+    throw new TypeError('Data is not in the expected format');
+  }
+
     const dataToSend = { ...proxmoxData, virtualMachines, logs};
 
     clients.forEach((client) => {
