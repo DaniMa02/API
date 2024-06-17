@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import HomePageView from './pages/HomePageView';
 import VirtualMachineListPage from './pages/VirtualMachineListPage';
+import LogsPage from './pages/LogsPage'; // Importa la página de logs
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,7 +12,6 @@ const App = () => {
       <div>
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
-
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
@@ -21,6 +21,9 @@ const App = () => {
                 <Nav.Link as={Link} to="/vms">
                   ELIMINAR MÁQUINAS VIRTUALES
                 </Nav.Link>
+                <Nav.Link as={Link} to="/logs">
+                  LOGS DE PROXMOX
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -29,6 +32,7 @@ const App = () => {
         <Routes>
           <Route path="/vms" element={<VirtualMachineListPage />} />
           <Route path="/" element={<HomePageView />} />
+          <Route path="/logs" element={<LogsPage />} /> 
         </Routes>
       </div>
     </Router>
