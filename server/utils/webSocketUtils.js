@@ -1,6 +1,7 @@
 import WebSocket, { WebSocketServer } from 'ws';
 import { getProxmoxData, getVirtualMachines } from '../services/proxmoxService.js';
 import { createVirtualMachine, deleteVirtualMachines } from '../controllers/vmController.js';
+import { getLogsFromView } from './database/logQueries.js';
 
 let wss;
 const clients = new Set();
@@ -54,8 +55,9 @@ async function sendDataToClients() {
   try {
     const proxmoxData = await getProxmoxData();
     const virtualMachines = await getVirtualMachines();
+    const logs = await getLogsFromView();
 
-    const dataToSend = { ...proxmoxData, virtualMachines };
+    const dataToSend = { ...proxmoxData, virtualMachines, logs};
 
     clients.forEach((client) => {
       client.send(JSON.stringify(dataToSend));
