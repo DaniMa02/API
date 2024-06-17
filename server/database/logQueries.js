@@ -5,7 +5,12 @@ export async function getLogsFromView() {
   try {
     conn = await initialize();
     const [results] = await conn.query("SELECT * FROM vista_logs");
-    const rows = results ? results : [];
+
+    if (!Array.isArray(results)) {
+      throw new TypeError('Expected results to be an array');
+    }
+
+    const rows = results.length > 0 ? results : [];
     return rows;
   } catch (error) {
     console.error('Error al obtener los logs desde la vista:', error);
